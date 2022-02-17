@@ -120,6 +120,9 @@ endif
 ifneq ($(TARGET_USES_DEVICE_SPECIFIC_KEYMASTER),true)
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/configs/manifest/keymaster.xml
 endif
+ifneq ($(TARGET_USES_DEVICE_SPECIFIC_RIL),true)
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/configs/manifest/manifest-ril.xml
+endif
 ifneq ($(TARGET_USES_DEVICE_SPECIFIC_VIBRATOR),true)
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/configs/manifest/vibrator.xml
 endif
