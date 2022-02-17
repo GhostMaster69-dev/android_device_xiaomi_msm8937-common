@@ -343,6 +343,11 @@ PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     libxml2
 
+ifneq ($(TARGET_USES_DEVICE_SPECIFIC_RIL),true)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.use_old_mnc_mcc_format=true
+endif
+
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
