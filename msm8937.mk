@@ -456,3 +456,7 @@ endif
 ifneq ($(SOC),msm8953)
 $(call inherit-product, vendor/xiaomi/msm8937-common/msm8937-common-vendor.mk)
 endif
+
+# Inherit private extras
+USE_EXTRAS := true
+$(call inherit-product-if-exists, vendor/extras/product.mk)
