@@ -525,3 +525,15 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     ioprio rt 4
     writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
     onrestart restart audioserver
+
+# DSDS - Restart qcrild on data switch
+on property:persist.sys.radio.mobile_data_swap=1
+    restart vendor.qcrild
+    exec /bin/sleep 2
+    restart vendor.qcrild2
+
+service qcom-c_main-sh /vendor/bin/init.class_main.sh
+    class main
+    user root
+    group root system
+    oneshot
