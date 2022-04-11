@@ -297,7 +297,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.qcom.sh \
     init.qcom.bt.sh \
-    init.qcom.post_boot.sh
+    init.qcom.post_boot.sh \
+    init.class_main.sh
 
 # RenderScript
 PRODUCT_PACKAGES += \
