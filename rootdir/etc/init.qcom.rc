@@ -534,3 +534,10 @@ on property:persist.sys.radio.mobile_data_swap=1
     restart vendor.qcrild
     exec /bin/sleep 2
     restart vendor.qcrild2
+
+# Restart qcrild after boot completed
+on property:sys.boot_completed=1
+    exec /bin/sleep 3
+    restart vendor.qcrild
+    exec /bin/sleep 2
+    restart vendor.qcrild2
