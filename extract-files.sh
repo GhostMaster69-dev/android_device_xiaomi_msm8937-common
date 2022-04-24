@@ -80,24 +80,24 @@ function blob_fixup() {
         system_ext/etc/permissions/qcrilhook.xml)
             sed -i 's|/product/framework/qcrilhook.jar|/system_ext/framework/qcrilhook.jar|g' "${2}"
             ;;
-        system_ext/lib64/libdpmframework.so)
+        system_ext/lib/libdpmframework.so)
             for LIBSHIM_DPMFRAMEWORK in $(grep -L "libshim_dpmframework.so" "${2}"); do
                 "${PATCHELF}" --add-needed "libshim_dpmframework.so" "${2}"
             done
             ;;
-        vendor/lib/mediadrm/libwvdrmengine.so|vendor/lib64/mediadrm/libwvdrmengine.so)
+        vendor/lib/mediadrm/libwvdrmengine.so)
             "${PATCHELF}" --replace-needed "libprotobuf-cpp-lite.so" "libprotobuf-cpp-lite-v29.so" "${2}"
             ;;
-        vendor/lib64/libsettings.so)
+        vendor/lib/libsettings.so)
             "${PATCHELF}" --replace-needed "libprotobuf-cpp-full.so" "libprotobuf-cpp-full-v29.so" "${2}"
             ;;
-        vendor/lib64/libwvhidl.so)
+        vendor/lib/libwvhidl.so)
             "${PATCHELF}" --replace-needed "libprotobuf-cpp-lite.so" "libprotobuf-cpp-lite-v29.so" "${2}"
             ;;
-        vendor/lib64/libril-qc-hal-qmi.so)
+        vendor/lib/libril-qc-hal-qmi.so)
                 "${PATCHELF}" --replace-needed "android.hardware.radio.config@1.1.so" "android.hardware.radio.config@1.1_shim.so" "${2}"
         ;;
-        vendor/lib64/android.hardware.radio.config@1.1_shim.so)
+        vendor/lib/android.hardware.radio.config@1.1_shim.so)
                 "${PATCHELF}" --set-soname "android.hardware.radio.config@1.1_shim.so" "${2}"
                 sed -i -e 's|android.hardware.radio.config@1.1::IRadioConfig\x00|android.hardware.radio.config@1.0::IRadioConfig\x00|g' "${2}"
         ;;
